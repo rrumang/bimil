@@ -26,7 +26,7 @@ function App() {
         ) : (
           "initailizing . . ."
         )}
-      <footer>&copy; {new Date().getFullYear} BIMIL</footer>
+      {/* <footer>&copy; {new Date().getFullYear} BIMIL</footer> */}
     </>
   );
 }

@@ -1,6 +1,7 @@
-import { dbService } from "../fbase";
+import { dbService, storageService } from "../fbase";
 import { deleteDoc, doc, updateDoc } from "firebase/firestore";
 import { useState } from "react";
+import { ref, deleteObject } from "firebase/storage";
 
 const Story = ({ storyObj, isOwner }) => {
     const [editing, setEditing] = useState(false);
@@ -8,11 +9,13 @@ const Story = ({ storyObj, isOwner }) => {
     const onDeleteClick = async () => {
         const ok = window.confirm("삭제하시겠습니까?");
         if(ok) {
-            console.log(storyObj.id);
             // const data = await dbService.doc(`story/${storyObj.id}`);
             // const data = doc(dbService, (`story/${storyObj.id}`)).delete();
-            const data = deleteDoc(doc(dbService, "story", storyObj.id));
-            console.log(data);
+            await deleteDoc(doc(dbService, "story", storyObj.id));
+            if(storyObj.attachmentUrl !== "") {
+                // await storageService.refFromURL(storyObj.attachmentUrl).delete();
+                await deleteObject(ref(storageService, storyObj.attachmentUrl));
+            }
         }
     };
 
@@ -44,6 +47,9 @@ const Story = ({ storyObj, isOwner }) => {
             ) : (
                 <>
                     <h4>{storyObj.text}</h4>
+                    {storyObj.attachmentUrl && (
+                        <img src={storyObj.attachmentUrl} width="100px" height="100px" />
+                    )}
                     {isOwner && (
                         <>
                             <button onClick={onDeleteClick}>삭제</button>
