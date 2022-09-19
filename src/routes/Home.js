@@ -1,6 +1,7 @@
 import { dbService } from "fbase";
 import { addDoc, collection, onSnapshot } from "firebase/firestore";
 import { useEffect, useState } from "react";
+import Story from "components/Story";
 
 const Home = ({ userObj }) => {
     const [story, setStory] = useState("");
@@ -56,9 +57,7 @@ const Home = ({ userObj }) => {
             </form>
             <div>
                 {storys.map((story) => (
-                    <div key={story.id}>
-                        <h4>{story.text}</h4>
-                    </div>
+                    <Story key={story.id} storyObj={story} isOwner={story.creatorId === userObj.uid}/>
                 ))}
             </div>
         </>
