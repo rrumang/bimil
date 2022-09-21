@@ -1,11 +1,11 @@
 import { authService, dbService } from "fbase";
 import { useEffect, useState } from "react";
-import {useNavigate} from "react-router-dom";
 import { collection, query, where, orderBy, getDocs } from "firebase/firestore";
 import { updateProfile } from "firebase/auth";
+import {useHistory} from "react-router-dom";
 
 const Profile = ({ userObj, refreshUser }) => {
-    const history = useNavigate();
+    const history = useHistory();
     const [newDisplayName, setNewDisplayName] = useState(userObj.displayName);
 
     const onLogOutClick = () => {
@@ -13,14 +13,14 @@ const Profile = ({ userObj, refreshUser }) => {
         // 로그아웃 후 주소이동 방법 두번째 : react-router-dom의 useNavigate를 이용한 방법(첫번째 방법은 Router.js에서 사용)
         // v5
         // const history = useHistory();
-        // history.push('/home');
+        history.push('/home');
         // history.replace('/home');
         
         // v6
         // const navigate = useNavigate();
         // navigate('/home');
         // navigate('/home', {replace: true});
-        history("/");
+        // history("/");
     };
 
     const onChange = (event) => {
@@ -51,13 +51,13 @@ const Profile = ({ userObj, refreshUser }) => {
     }, []);*/
 
     return (
-        <>
-            <form onSubmit={onSubmit}>
-                <input onChange={onChange} type="text" placeholder="Display name" value={newDisplayName} />
-                <input type="submit" value="update Profile" />
+        <div className="container">
+            <form onSubmit={onSubmit} className="profileForm">
+                <input onChange={onChange} type="text" placeholder="Display name" value={newDisplayName} autoFocus className="formInput" />
+                <input type="submit" value="update Profile" className="formBtn" style={{marginTop: 10,}} />
             </form>
-            <button onClick={onLogOutClick}>Log Out</button>
-        </>
+            <span className="formBtn cancelBtn logOut" onClick={onLogOutClick}>Log Out</span>
+        </div>
     );
 };
 
