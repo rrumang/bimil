@@ -1,0 +1,10 @@
+{
+  "files": {
+    "main.js": "/bimil/static/js/main.ec682c60.js",
+    "index.html": "/bimil/index.html",
+    "main.ec682c60.js.map": "/bimil/static/js/main.ec682c60.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.ec682c60.js"
+  ]
+}
