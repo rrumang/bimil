@@ -13,7 +13,7 @@ const Profile = ({ userObj, refreshUser }) => {
         // 로그아웃 후 주소이동 방법 두번째 : react-router-dom의 useNavigate를 이용한 방법(첫번째 방법은 Router.js에서 사용)
         // v5
         // const history = useHistory();
-        history.push('/home');
+        // history.push('/home');
         // history.replace('/home');
         
         // v6
@@ -21,6 +21,7 @@ const Profile = ({ userObj, refreshUser }) => {
         // navigate('/home');
         // navigate('/home', {replace: true});
         // history("/");
+        history.push("/");
     };
 
     const onChange = (event) => {
