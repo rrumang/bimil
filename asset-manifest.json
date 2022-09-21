@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/bimil/static/css/main.ff37f1a6.css",
-    "main.js": "/bimil/static/js/main.450a0cda.js",
+    "main.js": "/bimil/static/js/main.2151a96f.js",
     "index.html": "/bimil/index.html",
     "main.ff37f1a6.css.map": "/bimil/static/css/main.ff37f1a6.css.map",
-    "main.450a0cda.js.map": "/bimil/static/js/main.450a0cda.js.map"
+    "main.2151a96f.js.map": "/bimil/static/js/main.2151a96f.js.map"
   },
   "entrypoints": [
     "static/css/main.ff37f1a6.css",
-    "static/js/main.450a0cda.js"
+    "static/js/main.2151a96f.js"
   ]
 }
